@@ -1,0 +1,20 @@
+ //****main activity code..
+        //Intent intent1 = new Intent(getApplicationContext(), PdfView.class);
+        //intent1.putExtra("PdfUri", pdfUri.toString());
+        //intent1.putExtra("IsUrl",1);
+        //startActivity(intent1);
+
+        //*********viwer second activity code.
+        Intent intent = getIntent();
+        int isurl= getIntent().getIntExtra("IsUrl",0);
+        if (intent != null && isurl==1) {
+            String pdfUri =  getIntent().getStringExtra("PdfUri");
+            System.out.println(" Extract data from the intent .................");
+            if (pdfUri != null) {
+                System.out.println(" Load the PDF into your PDF viewer .................");
+                displayPDF(Uri.parse(pdfUri));
+                return;
+            }
+            Toast.makeText(this, "Invalid Pdf File", Toast.LENGTH_SHORT).show();
+            return;
+        }
